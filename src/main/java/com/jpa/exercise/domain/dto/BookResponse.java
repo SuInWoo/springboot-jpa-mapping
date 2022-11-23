@@ -16,6 +16,7 @@ public class BookResponse {
     private Long bookId;
     private String bookName;
     private String authorName;
+    private String publisherName;
 
     // BookEntity를 BookResponse Dto로 만들어주는 부분
     public static BookResponse of(Book book) {
@@ -23,6 +24,7 @@ public class BookResponse {
                 .bookId(book.getId())
                 .bookName(book.getName())
                 .authorName(book.getAuthor().getName())
+                .publisherName(book.getPublisher().getName())
                 .build();
     }
 }
