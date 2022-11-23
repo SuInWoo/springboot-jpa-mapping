@@ -18,11 +18,11 @@ public class BookResponse {
     private String authorName;
 
     // BookEntity를 BookResponse Dto로 만들어주는 부분
-    public static BookResponse of(Book book, String authorName) {
+    public static BookResponse of(Book book) {
         return BookResponse.builder()
                 .bookId(book.getId())
                 .bookName(book.getName())
-                .authorName(authorName)
+                .authorName(book.getAuthor().getName())
                 .build();
     }
 }

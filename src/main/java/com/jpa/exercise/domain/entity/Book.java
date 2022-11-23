@@ -1,6 +1,5 @@
 package com.jpa.exercise.domain.entity;
 
-import com.jpa.exercise.domain.dto.BookResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +18,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Long authorId;
+//    private Long authorId;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 }
