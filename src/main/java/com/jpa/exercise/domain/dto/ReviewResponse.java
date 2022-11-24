@@ -1,5 +1,6 @@
 package com.jpa.exercise.domain.dto;
 
+import com.jpa.exercise.domain.entity.Hospital;
 import com.jpa.exercise.domain.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,4 +17,5 @@ public class ReviewResponse {
     private String reviewTitle;
     private String reviewContent;
     private String message;
+
 }

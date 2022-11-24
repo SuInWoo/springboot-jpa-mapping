@@ -28,4 +28,13 @@ public class ReviewService {
         return new ReviewResponse(savedReview.getId(), savedReview.getPatientName(),
                 savedReview.getTitle(), savedReview.getContent(), "등록완료");
     }
+
+    public ReviewResponse getReview(Long id) {
+        Optional<Review> optReview = reviewRepository.findById(id);
+        Review selectReview = optReview.get();
+
+        return new ReviewResponse(selectReview.getId(), selectReview.getPatientName(),
+                selectReview.getTitle(), selectReview.getContent(), "1개 조회 완료");
+
+    }
 }
