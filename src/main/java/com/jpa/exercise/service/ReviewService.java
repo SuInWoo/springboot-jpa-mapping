@@ -44,8 +44,8 @@ public class ReviewService {
         Optional<Hospital> optHospital = hospitalRepository.findById(hospitalId);
         List<Review> reviewList = optHospital.get().getReviews();
         List<ReviewResponse> reviewResponses = reviewList.stream()
-                .map(review ->
-                        ReviewResponse.of(review)).collect(Collectors.toList());
+                .map(review -> ReviewResponse.of(review))
+                .collect(Collectors.toList());
         return reviewResponses;
     }
 }
