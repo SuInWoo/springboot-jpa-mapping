@@ -1,15 +1,13 @@
 package com.jpa.exercise.controller;
 
-import com.jpa.exercise.domain.dto.HospitalResponse;
 import com.jpa.exercise.domain.dto.ReviewRequest;
 import com.jpa.exercise.domain.dto.ReviewResponse;
-import com.jpa.exercise.domain.entity.Review;
 import com.jpa.exercise.service.HospitalService;
 import com.jpa.exercise.service.ReviewService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 
 @RestController
@@ -24,15 +22,21 @@ public class HospitalController {
         this.reviewService = reviewService;
     }
 
-    @PostMapping("/{id}/reviews")
+    @PostMapping("/{id}/reviews/add")
     public ResponseEntity<ReviewResponse> add(@PathVariable Long id, @RequestBody ReviewRequest reviewRequest) {
         ReviewResponse reviewResponse = reviewService.addReview(id, reviewRequest);
         return ResponseEntity.ok().body(reviewResponse);
     }
 
     @GetMapping("/reviews/{id}")
-    public ResponseEntity<ReviewResponse> get(@PathVariable Long id) {
+    public ResponseEntity<ReviewResponse> findByIdReview(@PathVariable Long id) {
         ReviewResponse reviewResponse = reviewService.getReview(id);
         return ResponseEntity.ok().body(reviewResponse);
+    }
+
+    @GetMapping("/{id}/reviews/get")
+    public ResponseEntity<List<ReviewResponse>> findByIdReviewList(@PathVariable Long id) {
+        List<ReviewResponse> reviewResponses = reviewService.getHospitalReview(id);
+        return ResponseEntity.ok().body(reviewResponses);
     }
 }

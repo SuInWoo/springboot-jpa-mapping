@@ -1,6 +1,5 @@
 package com.jpa.exercise.domain.dto;
 
-import com.jpa.exercise.domain.entity.Hospital;
 import com.jpa.exercise.domain.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,10 +11,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewResponse {
+    private String hospitalName;
     private Long reviewId;
     private String reviewPatientName;
     private String reviewTitle;
     private String reviewContent;
     private String message;
 
+    public ReviewResponse(Long reviewId, String reviewPatientName, String reviewTitle, String reviewContent, String message) {
+        this.reviewId = reviewId;
+        this.reviewPatientName = reviewPatientName;
+        this.reviewTitle = reviewTitle;
+        this.reviewContent = reviewContent;
+        this.message = message;
+    }
+
+    public static ReviewResponse of(Review review) {
+        return ReviewResponse.builder()
+                .hospitalName(review.getHospital().getName())
+                .reviewId(review.getId())
+                .reviewPatientName(review.getPatientName())
+                .reviewTitle(review.getTitle())
+                .reviewContent(review.getContent())
+                .message("해당 병원 리뷰 조회 완료")
+                .build();
+    }
 }
