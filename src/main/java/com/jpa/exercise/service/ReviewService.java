@@ -35,7 +35,7 @@ public class ReviewService {
         Optional<Review> optReview = reviewRepository.findById(reviewId);
         Review selectReview = optReview.get();
 
-        return new ReviewResponse(selectReview.getId(), selectReview.getPatientName(),
+        return new ReviewResponse(selectReview.getHospital().getName(), selectReview.getId(), selectReview.getPatientName(),
                 selectReview.getTitle(), selectReview.getContent(), "1개 조회 완료");
 
     }
