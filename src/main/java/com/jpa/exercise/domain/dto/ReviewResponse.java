@@ -18,14 +18,6 @@ public class ReviewResponse {
     private String reviewContent;
     private String message;
 
-    public ReviewResponse(Long reviewId, String reviewPatientName, String reviewTitle, String reviewContent, String message) {
-        this.reviewId = reviewId;
-        this.reviewPatientName = reviewPatientName;
-        this.reviewTitle = reviewTitle;
-        this.reviewContent = reviewContent;
-        this.message = message;
-    }
-
     public static ReviewResponse of(Review review) {
         return ReviewResponse.builder()
                 .hospitalName(review.getHospital().getName())

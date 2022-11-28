@@ -27,7 +27,7 @@ public class ReviewService {
         Review review = reviewRequest.toEntity(optHospital.get());
         Review savedReview = reviewRepository.save(review);
 
-        return new ReviewResponse(savedReview.getId(), savedReview.getPatientName(),
+        return new ReviewResponse(savedReview.getHospital().getName(), savedReview.getId(), savedReview.getPatientName(),
                 savedReview.getTitle(), savedReview.getContent(), "등록완료");
     }
 
